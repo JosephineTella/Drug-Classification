@@ -10,21 +10,22 @@ This project focuses on developing a predictive model to classify drug types tha
 
 <img width="735" height="333" alt="Screenshot 2026-02-04 050312" src="https://github.com/user-attachments/assets/cd3c1fcf-4c0d-447a-9d8c-d4b0fd1447d1" />
 
+The four histograms showed key health variable distributions. Age was fairly evenly spread from 20–80, with a higher concentration between 25–45 while cholesterol levels were roughly half HIGH and half NORMAL. The Na-to-K ratio was right-skewed, peaking around 10 and declining toward 35. Drug use was imbalanced, with Drug 0.0 being the most common, followed by Drug 4.0, while Drugs 1.0–3.0 occurred much less frequently.
 
-These four histograms display the distributions of key health variables in the dataset. The Age Distribution showed relatively uniform spread across 20-80 years with slight peaks in the 25-45 range, indicating balanced age representation. Cholesterol is split nearly equally between HIGH (~100) and NORMAL (~95) categories. The Na_to_K Ratio exhibited right-skewed distribution peaking at ~10 with ~55 individuals and declining toward 35. The Drug Distribution revealed class imbalance with Drug 0.0 dominating (~90 individuals), Drug 4.0 at ~55, and Drugs 1.0-3.0 at progressively lower frequencies (~23, ~16, ~15)
 
 ###### (ii) Bivariate Analysis
 
 <img width="1205" height="346" alt="Screenshot 2026-02-03 175127" src="https://github.com/user-attachments/assets/127c5165-60d9-411c-9d18-55b44f3650f2" />
 
-The distribution analysis shows that DrugY is the most commonly prescribed medication across sexes, blood pressure categories, and cholesterol levels, with a slightly higher prescription rate among females. Across blood pressure groups, DrugY is consistently prescribed for high, low, and normal BP, while DrugX is more frequently prescribed in individuals with normal blood pressure. Similarly, DrugY is used across both high and normal cholesterol levels, indicating that it functions as a first-line treatment regardless of lipid status.
+The analysis showed that DrugY is the most commonly prescribed medication for both sexes and all blood pressure and cholesterol levels, with slightly more prescriptions for females. DrugY was given to people with high, low, or normal blood pressure, while DrugX was mostly used for normal blood pressure. DrugY was also used for both high and normal cholesterol, showing it is a common first-choice treatment regardless of blood pressure or cholesterol.
 
 
 ###### (iii) Correlation Matrix
 
 <img width="537" height="457" alt="Screenshot 2026-02-03 154024" src="https://github.com/user-attachments/assets/8e7b26ba-6b86-45d5-904e-e0b7e92dd513" />
 
-The correlation matrix illustrated the linear relationships among demographic, clinical, and biochemical variables and their association with the target drug class. The sodium-to-potassium ratio shows the strongest relationship with the drug outcome (r = −0.69), indicating a strong negative correlation and highlighting Na_to_K as a key determinant in drug prescription. Blood pressure exhibited a moderate positive correlation with the drug variable (r = 0.42), further identifying it as an important predictive feature. In contrast, age, sex, and cholesterol displayed weak correlations with the drug outcome (r ≈ 0.02–0.05), suggesting they contributed minimally to drug classification compared with Na_to_K and blood pressure.
+The correlation matrix showed how demographic, clinical, and biochemical variables related to drug type. The sodium-to-potassium ratio had the strongest link, with a strong negative correlation (r = −0.69), making it a key factor in prescriptions. Blood pressure was a moderate positive correlation (r = 0.42), while age, sex, and cholesterol had very weak correlations (r ≈ 0.02–0.05), meaning they played a minor role in predicting drug type.
+
 
 ###### (iv) Joint Plot Grid 
 
@@ -36,7 +37,7 @@ The joint plot grid visualized relationships between Age and Na_to_K Ratio, colo
 
 <img width="1118" height="345" alt="Screenshot 2026-02-04 044050" src="https://github.com/user-attachments/assets/9df11767-fd29-45fa-bc4d-53c4f0b90b22" />
 
-The analysis shows a highly imbalanced drug distribution, with DrugY being the most commonly administered, accounting for about 90 cases and nearly half of all observations (45.5%), followed by DrugX with roughly 55 cases (27.0%), while DrugA, DrugB, and DrugC appear far less frequently. This dominance suggests DrugY may have broader applicability or greater availability. Age distribution patterns further reveal distinct prescribing trends: DrugY and DrugX are used across wide age ranges, indicating suitability for diverse populations, whereas DrugA is concentrated among middle-aged users. DrugC tends to be prescribed to younger individuals, while DrugB is predominantly used by older adults, as reflected by its higher median age and narrower age spread. Together, these findings highlight both usage imbalance across drugs and age-specific prescribing behaviors
+The analysis showed that DrugY was used the most, with 90 cases (45.5%), followed by DrugX with 55 cases (27%), while DrugA, DrugB, and DrugC were much less common. This suggested that DrugY was more widely used or more available. DrugY and DrugX were prescribed across many age groups, while DrugA was mostly used by middle-aged people. DrugC was more common in younger individuals, and DrugB was mainly prescribed to older adults. Overall, the results showed an imbalance in drug use and clear age-based prescribing patterns.
 
 ### Model Performance
 
@@ -47,4 +48,6 @@ The table shows a clear performance hierarchy across classification models, with
 
 ### Conclusion
 
-The analysis reveals that DrugY dominates prescription patterns and is broadly applicable across demographic and clinical categories. Drug selection is primarily driven by metabolic (Na_to_K ratio) and blood pressure variables, while age, sex, and cholesterol play minor roles. From a predictive modeling perspective, ensemble and tree-based algorithms achieve near-perfect classification accuracy, demonstrating that the dataset contains strong, structured decision boundaries that can be effectively captured using nonlinear models. Collectively, the findings suggest a highly predictable drug assignment framework driven by key physiological indicators, with DrugY serving as the primary therapeutic option across diverse patient profiles.
+The table showed that tree-based and ensemble models performed much better than linear and distance-based models. Decision Tree, Bagging, AdaBoost, and CatBoost achieved almost perfect results (99.38% accuracy) with very high precision, recall, and F1-scores. Random Forest, LightGBM, and XGBoost also performed very well, with accuracy above 97%. Extra Trees had slightly lower performance at 95%. Linear and probabilistic models like Logistic Regression, SGD, and Naive Bayes had moderate accuracy, while SVC and KNN performed the weakest. Overall, tree-based ensemble methods work best for this dataset because they captured complex patterns and relationships more effectively.
+
+
